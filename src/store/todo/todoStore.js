@@ -1,5 +1,5 @@
 import { makeAutoObservable } from "mobx";
-import { getTodos } from "../../api";
+import { getTodos, deleteTodos } from "../../api";
 
 class todoStore {
   todos = [];
@@ -26,6 +26,17 @@ class todoStore {
     if (resp.status === 200) {
       this.setTodos(resp.data);
       successCB();
+    } else {
+      errorCB(resp.data);
+    }
+    this.setLoading(false);
+  };
+
+  deleteTodos = async (uuid, successCB, errorCB) => {
+    const resp = await deleteTodos(uuid);
+
+    if (resp.status === 200) {
+      successCB(resp.data);
     } else {
       errorCB(resp.data);
     }

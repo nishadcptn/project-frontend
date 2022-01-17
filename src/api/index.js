@@ -14,4 +14,11 @@ const getCompletedTodos = (completed) => {
   );
 };
 
-export { getTodos, getCompletedTodos };
+const deleteTodos = (uuid) => {
+  return axios.delete(`/todos/${uuid}`).then(
+    (res) => res,
+    (error) => error.response
+  );
+};
+
+export { getTodos, getCompletedTodos, deleteTodos };

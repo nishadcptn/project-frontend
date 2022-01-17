@@ -6,7 +6,7 @@ export const ContainerDiv = styled.div`
     background: aliceblue;
     .container-div{
         background: #fff;
-        width: 40%;
+        width: 30%;
         height: 80%;
         box-shadow: 0px 0px 7px 0px blac
     }
@@ -55,14 +55,54 @@ export const ContainerDiv = styled.div`
         border-bottom: 2px solid #5e229bd1;
     }
     .item-list{
-        padding-top: 30px;
+        margin-top: 10px;
+        overflow-y: scroll;
+        height: 538px;
+        // margin-top: 20px;
     }
     .item{
         width: 90%;
-        height: 100px;
+        height: 125px;
         background: #fff;
-        box-shadow: 0px 0px 6px 0px #dfdfdfb5;
+        box-shadow: 1px 2px 9px 0px #dfdfdfb5;
         margin-bottom: 18px;
+        h4{
+            font-family: sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #504343;
+            padding: 10px 0px 0px 10px;
+            display: flex;
+            justify-content: space-between;
+            .icon-div{
+                margin-right: 10px;
+                cursor: pointer;
+                svg{
+                    display:none;
+                    margin: 3px;
+                    box-shadow: 0px 0px 3px 0px;
+                    width: 20px;
+                    height: 20px;
+                    padding: 3px;
+                    border-radius: 50%;
+                }
+            }
+        }
+        p{
+            padding: 2px 10px 0px 18px;
+            font-size: 14px;
+            font-family: sans-serif;
+        }
+    }
+    .item:nth-child(1){
+        margin-top: 18px;
+    }
+    .item:hover h4 .icon-div svg{
+        display:block;
+        transition: 0.8s;
+    }
+    .space{
+        width: 5px;
     }
     .flag{
         width: 30px;

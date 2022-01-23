@@ -7,6 +7,13 @@ const getTodos = () => {
   );
 };
 
+const getSingleTodos = (uuid) => {
+  return axios.get(`/todos/${uuid}`).then(
+    (res) => res,
+    (error) => error.response
+  );
+};
+
 const getCompletedTodos = (completed) => {
   return axios.get(`/todos/?completed=${completed}`).then(
     (res) => res,
@@ -21,4 +28,17 @@ const deleteTodos = (uuid) => {
   );
 };
 
-export { getTodos, getCompletedTodos, deleteTodos };
+const createTodos = (data) =>{
+  return axios.post(`/todos`,data).then(
+    (res) => res,
+    (error) => error
+  );
+}
+
+const updateTodos = (uuid, data) =>{
+  return axios.patch(`/todos/${uuid}`,data).then(
+    (res) => res,
+    (error) => error
+  );
+}
+export { getTodos, getCompletedTodos, deleteTodos ,createTodos, updateTodos, getSingleTodos};

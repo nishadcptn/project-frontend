@@ -1,13 +1,17 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { observer } from "mobx-react-lite";
 import { useStore } from "../../store";
 import { ContainerDiv } from "./elements/style";
 import Button from "react-bootstrap/Button";
 import TodoItem from "./components/item";
+import CreateModal from "../../components/createModal";
 
 const Home = observer(() => {
   const { todoStore } = useStore();
   const { isLoading, getAllTodos, todos, deleteTodos } = todoStore;
+
+  const [show, setShow] = useState(false);
+  const [mod, setMod] = useState("create");
 
   useEffect(() => {
     getAllTodos(
@@ -34,10 +38,17 @@ const Home = observer(() => {
   };
   return (
     <ContainerDiv className="d-flex align-items-center justify-content-center">
+      {show ? (
+        <CreateModal setShow={setShow} mod={mod} setMod={setMod} />
+      ) : (
+        <></>
+      )}
       <div className="container-div">
         <div className="head d-flex align-items-center justify-content-around">
           <h3>to-do list</h3>
-          <Button variant="primary">Add New</Button>{" "}
+          <Button variant="primary" onClick={() => setShow(true)}>
+            Add New
+          </Button>{" "}
         </div>
         <div className="content-body">
           <div className="d-flex  flex-row align-items-center justify-content-center wrapper">
